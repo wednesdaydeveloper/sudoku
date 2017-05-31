@@ -1,0 +1,8 @@
+{
+    "version": "0.1.0",
+    "command": "${workspaceRoot}/node_modules/.bin/tsc",
+    "isShellCommand": true,
+    "showOutput": "silent",
+    "args": ["-w", "${workspaceRoot}/src/lib/SudokuSolver.ts"],
+    "problemMatcher": "$tsc"
+}
