@@ -1,20 +1,20 @@
-namespace Sudoku {
+export namespace Sudoku {
 
-    interface CellBase {
+    export interface Cell {
         row: number;
         col: number;
     }
 
-    interface SolvedCell extends CellBase {
+    export interface SolvedCell extends Cell {
         blk: number;
         val: number;
     }
 
-    interface UnsolvedCell extends CellBase {
+    interface UnsolvedCell extends Cell {
         unused: number[];
     }
 
-    class Solver {
+    export class Solver {
         static readonly Size: number = 9;
 
         static readonly AllValues = Array.from({ length: Solver.Size }, (v, k) => k + 1);
@@ -106,19 +106,4 @@ namespace Sudoku {
             return new Array<Array< number>>();
         }
     }
-
-    // const array = [
-    //     [2, 0, 0, 0, 0, 9, 0, 8, 0, ],
-    //     [0, 4, 6, 0, 0, 0, 0, 0, 0, ],
-    //     [7, 0, 0, 4, 0, 2, 1, 0, 0, ],
-    //     [6, 0, 0, 0, 0, 1, 4, 0, 8, ],
-    //     [0, 0, 0, 6, 3, 0, 0, 2, 0, ],
-    //     [9, 2, 7, 0, 0, 0, 0, 0, 3, ],
-    //     [1, 0, 0, 9, 0, 0, 8, 4, 0, ],
-    //     [0, 9, 0, 0, 0, 0, 0, 0, 0, ],
-    //     [4, 0, 0, 0, 0, 0, 0, 6, 0, ],
-    // ];
-    // var solver = new Solver(array);
-    // var answer = solver.solve();
-    // answer.forEach(row => console.log(row.join(' ')));
 } 

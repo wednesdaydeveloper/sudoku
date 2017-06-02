@@ -1,12 +1,13 @@
 import Counter, {StateProps, DispatchProps} from './Matrix';
-import {fillCell} from './module';
+import {selectCell} from './module';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
-import {SudokuState} from '../State';
+import {SudokuState, SudokuCell} from '../State';
 
 function mapStateToProps(state: SudokuState): StateProps {
   return {
-    data: state.data,
+    data: [...state.initialCells, ...state.resultCells],
+    selected: state.selectedCell,
   };
 }
 
@@ -14,7 +15,7 @@ type DispatchType = (col: number, row: number, val: number) => void;
 
 function mapDispatchToProps(dispatch: Dispatch<DispatchType>): DispatchProps {
   return {
-     onFillCell: (col: number, row: number, val: number) => dispatch(fillCell(col, row, val)),
+     onSelectCell: (cell: SudokuCell) => dispatch(selectCell(cell)),
   };
 }
 

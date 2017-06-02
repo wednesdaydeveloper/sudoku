@@ -1,10 +1,14 @@
+import * as sudoku  from './lib/SudokuSolver'
 
-export interface SudokuCell {
-  col: number;
-  row: number;
-  val?: number;
+export interface SudokuCell extends sudoku.Sudoku.Cell {
+  val: number;
+  initial?: boolean;
 };
 
 export interface SudokuState {
-  data: SudokuCell[];
+  initialCells: SudokuCell[];
+  resultCells: SudokuCell[];
+  selectedCell: SudokuCell | undefined;
+  hint: boolean;
+  teacher: boolean;
 };
