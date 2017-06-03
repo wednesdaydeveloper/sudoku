@@ -43,7 +43,13 @@ const Matrix = (props: StateProps & DispatchProps) => {
         <div>
             <table className="sudokuTable" >
                 <tbody>
-{array.map(row => <tr>{row.map(cell => <td onClick={e => _click(e, cell)} className={getClassName(cell)}><p >{cell.val < 1 ? '' : cell.val}</p></td>)}</tr>)}
+                {array.map(row => (
+                    <tr>
+                        {row.map(cell => (
+                            <td onClick={e => _click(e, cell)} className={getClassName(cell)}>
+                                <p >{cell.val < 1 ? '' : cell.val}</p>
+                            </td>))}
+                    </tr>))}
                 </tbody>
             </table>
         </div>

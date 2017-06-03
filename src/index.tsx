@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Matrix from './matrix/Container';
 import ToolBar from './toolbar/ToolBar';
+import MessageContainer from './message/Container';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 import { Provider } from 'react-redux';
@@ -16,7 +17,11 @@ ReactDOM.render(
       <div className="panel-body">
         <Matrix />
       </div>
-      <ToolBar />
+      <div className="panel-footer">
+        <ToolBar />
+        <MessageContainer />
+      </div>
+      
     </div>
   </Provider>,
   document.getElementById('root') as HTMLElement

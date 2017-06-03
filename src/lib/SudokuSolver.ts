@@ -6,7 +6,6 @@ export namespace Sudoku {
     }
 
     export interface SolvedCell extends Cell {
-        blk: number;
         val: number;
     }
 
@@ -39,8 +38,7 @@ export namespace Sudoku {
                 for (let col = 0; col < input[row].length; col++) {
                     const val = input[row][col];
                     if (val > 0) {
-                        const blk = Solver.SubBlockMask[row][col];
-                        this.InitialCell.push({ row, col, val, blk });
+                        this.InitialCell.push({ row, col, val });
                     }
                 }
             }
@@ -60,6 +58,17 @@ export namespace Sudoku {
             return answer;
         }
 
+        unUsedValues(currentCell: Cell, solvedCells: SolvedCell[]) {
+            const block = Solver.SubBlockMask[currentCell.row][currentCell.col];
+            const usedValues = solvedCells
+                .filter(cell => 
+                    cell.row                                === currentCell.row || 
+                    cell.col                                === currentCell.col ||
+                    Solver.SubBlockMask[cell.row][cell.col] === block)
+                .map(cell => cell.val);
+
+            return Solver.AllValues.filter((val: number) => usedValues.find(v => v === val) === undefined);
+        }
         solve(results: SolvedCell[] = []): number[][] {
 
             const solvedCells: SolvedCell[] = [...this.InitialCell, ...results];
@@ -68,15 +77,8 @@ export namespace Sudoku {
             for (let row = 0; row < Solver.Size; row++) {
                 for (let col = 0; col < Solver.Size; col++) {
                     if (!solvedCells.some(cell => cell.row === row && cell.col === col)) {
-                        const block = Solver.SubBlockMask[row][col];
-                        const usedVals = solvedCells
-                            .filter(cell => cell.row === row || cell.col === col || cell.blk === block)
-                            .map(cell => cell.val);
-
-                        const unused = Solver.AllValues
-                            .filter((val: number) => usedVals.find(v => v === val) === undefined);
-
-                        unsolvedCells.push({ row, col, unused });
+                        const unused = this.unUsedValues({row, col}, solvedCells);
+                        unsolvedCells.push({row, col, unused});
                     }
                 }
             }
@@ -104,6 +106,60 @@ export namespace Sudoku {
                 }
             }
             return new Array<Array< number>>();
+        }
+
+        isOK(solvedCells: SolvedCell[], pred: (cell: Cell) => boolean) {
+            const array = solvedCells.filter(pred)
+                .map(cell => cell.val)
+                .sort();
+
+            if (array.length !== Solver.Size) {
+                return false;
+            } else {
+                for (let i = 0; i < Solver.Size; i++) {
+                    if (array[i] !== (i + 1)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        isFilled(results: SolvedCell[]): boolean {
+            const solvedCells: SolvedCell[] = [...this.InitialCell, ...results];
+
+            if (solvedCells.length !== Solver.Size * Solver.Size) {
+                return false;
+            }
+            for (let row = 0; row < Solver.Size; row++) {
+                for (let col = 0; col < Solver.Size; col++) {
+                    if (!solvedCells.some(cell => cell.row === row && cell.col === col)) {
+                        return false;
+                    }
+                }
+            }
+            return true;            
+        }
+
+        isSolved(results: SolvedCell[]): boolean {
+            const solvedCells: SolvedCell[] = [...this.InitialCell, ...results];
+            
+            for (let row = 0; row < Solver.Size; row++) {
+                if (!this.isOK(solvedCells, (cell: Cell) => cell.row === row)) {
+                    return false;
+                }
+            }
+            for (let col = 0; col < Solver.Size; col++) {
+                if (!this.isOK(solvedCells, (cell: Cell) => cell.col === col)) {
+                    return false;
+                }
+            }
+            for (let blk = 0; blk < Solver.Size; blk++) {
+                if (!this.isOK(solvedCells, (cell: Cell) => Solver.SubBlockMask[cell.row][cell.col] === blk)) {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 } 

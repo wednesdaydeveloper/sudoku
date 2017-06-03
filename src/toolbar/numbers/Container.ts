@@ -5,7 +5,11 @@ import {fillCell} from '../../matrix/module';
 import {SudokuState} from '../../State';
 
 function mapStateToProps(state: SudokuState): StateProps {
-  return {};
+  return {
+    hint: state.hint,
+    hintResult: state.hintResult,
+    hasSelectedCell: state.selectedCell !== undefined,
+  };
 }
 
 type DispatchType = (val: number) => void;

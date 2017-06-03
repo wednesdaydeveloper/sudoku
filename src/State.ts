@@ -1,9 +1,13 @@
-import * as sudoku  from './lib/SudokuSolver'
+import * as sudoku  from './lib/SudokuSolver';
 
-export interface SudokuCell extends sudoku.Sudoku.Cell {
-  val: number;
+export interface SudokuCell extends sudoku.Sudoku.SolvedCell {
   initial?: boolean;
 };
+
+export interface Message {
+  messageString: string;
+  messageType: string;
+} 
 
 export interface SudokuState {
   initialCells: SudokuCell[];
@@ -11,4 +15,7 @@ export interface SudokuState {
   selectedCell: SudokuCell | undefined;
   hint: boolean;
   teacher: boolean;
+  hintResult: number[];
+  solved: boolean;
+  messages: Message[];
 };
