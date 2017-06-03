@@ -10,13 +10,13 @@ export interface DispatchProps {
 }
 
 const ToolBar = (props: StateProps & DispatchProps) => {
-    return (
-        <div className="btn-toolbar" role="toolbar">
-          <Numbers />
+  return (
+    <div className="btn-toolbar" role="toolbar">
+      <Numbers />
 
-          <Functions />
-        </div>
-    );
+      <Functions />
+    </div>
+  );
 };
 
 export default ToolBar;
