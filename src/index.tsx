@@ -21,7 +21,6 @@ ReactDOM.render(
         <ToolBar />
         <MessageContainer />
       </div>
-      
     </div>
   </Provider>,
   document.getElementById('root') as HTMLElement

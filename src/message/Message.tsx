@@ -8,14 +8,16 @@ export interface StateProps {
 export interface DispatchProps {
 }
 
+export type Props = StateProps & DispatchProps;
+
 const MessageComponent = (props: StateProps & DispatchProps) => {
 
   const getClassName = (message: Message) => 'alert ' + message.messageType;
 
   return (
     <div className="alert">
-      {props.messages.map(message => (
-        <div className={getClassName(message)} role="alert">
+      {props.messages.map((message, i) => (
+        <div key={i} className={getClassName(message)} role="alert">
           {message.messageString}
         </div>))}
     </div>

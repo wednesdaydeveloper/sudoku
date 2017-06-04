@@ -1,4 +1,6 @@
-import Numbers, {StateProps, DispatchProps} from './Numbers';
+import Numbers from './Numbers';
+import {StateProps, DispatchProps} from './NumberButton';
+
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {fillCell} from '../../matrix/module';

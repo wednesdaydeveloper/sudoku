@@ -14,9 +14,7 @@ function mapDispatchToProps(dispatch: Dispatch<void>): DispatchProps {
   };
 }
 
-const c = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-);
-
-export default c(MessageComponet);
+)(MessageComponet);

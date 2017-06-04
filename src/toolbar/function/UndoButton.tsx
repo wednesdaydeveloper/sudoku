@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface Props extends React.Props<{}> {
+export interface Props extends React.Props<{}> {
   disabled: boolean;
   onclick: () => void;
 }

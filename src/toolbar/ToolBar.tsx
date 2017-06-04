@@ -11,7 +11,7 @@ export interface DispatchProps {
 
 const ToolBar = (props: StateProps & DispatchProps) => {
   return (
-    <div className="btn-toolbar" role="toolbar">
+    <div className="btn-toolbar toolbox" role="toolbar">
       <Numbers />
 
       <Functions />

@@ -22,9 +22,16 @@ body {
   font-weight: bold;
 }
 
+/* セルの選択時の色 */
 .sudokuTable td.selected {
   background-color: LightBlue;
 }
+
 .sudokuTable td:hover {
   background-color: lightcyan;
+}
+
+/* ボタングループ間の隙間 */
+.toolbox .btn-group {
+  padding-right: 10px;
 }

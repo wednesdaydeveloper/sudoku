@@ -112,8 +112,8 @@ export default handleActions<SudokuState, SudokuCell>(
       return Object.assign({}, state, {teacher: !state.teacher});
     },
     [UNDO]: (state: SudokuState, action: Action<string>) => {
-      state.resultCells.pop();
-      return Object.assign({}, state, {resultCells: state.resultCells, messages: []});
+      const selectedCell = state.resultCells.pop();
+      return Object.assign({}, state, {selectedCell, resultCells: state.resultCells, messages: []});
     },
   },
   InitialState);

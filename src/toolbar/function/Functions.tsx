@@ -14,7 +14,9 @@ export interface DispatchProps {
   onUndo: () => void;
 }
 
-const Functions = (props: StateProps & DispatchProps) => {
+export type Props = StateProps & DispatchProps;
+
+const Functions = (props: Props) => {
 
   return (
     <div>
@@ -26,7 +28,6 @@ const Functions = (props: StateProps & DispatchProps) => {
       <div className="btn-group" role="group">
         <UndoButton disabled={!props.canUndo} onclick={props.onUndo} >Undo</UndoButton>
       </div>
-
     </div>
   );
 };
