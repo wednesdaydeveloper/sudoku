@@ -11,7 +11,7 @@ describe('ToggleButton', () => {
     props = {
         active: false,
         onclick: () => {return; },
-        children: "undo",
+        children: 'undo',
     };
     spyOn(props, 'onclick');
     
@@ -26,7 +26,6 @@ describe('ToggleButton', () => {
     expect(wrapper.find('button').at(0).prop('className')).toBe('btn btn-default active');
   });
 
-
   it('rendering when inactive', () => {
     props.active = false;
 
@@ -37,8 +36,6 @@ describe('ToggleButton', () => {
     expect(wrapper.find('button').at(0).prop('className')).toBe('btn btn-default');
   });
 
-
-
   it('rendering when clicked', () => {
 
     const wrapper = shallow(<ToggleButton {...props} />);
@@ -47,6 +44,4 @@ describe('ToggleButton', () => {
     
     expect(props.onclick).toHaveBeenCalled();
   });
-
-
 });

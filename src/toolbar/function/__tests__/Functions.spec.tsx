@@ -19,7 +19,6 @@ describe('ToggleButton', () => {
     spyOn(props, 'onToggleHint');
     spyOn(props, 'onToggleTeacher');
     spyOn(props, 'onUndo');
-    
   });
 
   it('rendering', () => {
@@ -34,7 +33,6 @@ describe('ToggleButton', () => {
     expect(wrapper.find('UndoButton').at(0).prop('children')).toBe('Undo');
     expect(wrapper.find('UndoButton').at(0).prop('disabled')).toBe(true);
   });
-
 
   it('rendering with hint true', () => {
     props.hint = true;
@@ -51,7 +49,6 @@ describe('ToggleButton', () => {
     expect(wrapper.find('UndoButton').at(0).prop('disabled')).toBe(true);
   });
 
-
   it('rendering with teacher true', () => {
     props.teacher = true;
 
@@ -67,7 +64,6 @@ describe('ToggleButton', () => {
     expect(wrapper.find('UndoButton').at(0).prop('disabled')).toBe(true);
   });
 
-
   it('rendering with canUndo true', () => {
     props.canUndo = true;
 
@@ -82,15 +78,4 @@ describe('ToggleButton', () => {
     expect(wrapper.find('UndoButton').at(0).prop('children')).toBe('Undo');
     expect(wrapper.find('UndoButton').at(0).prop('disabled')).toBe(false);
   });
-
-  // it('rendering when hint clicked', () => {
-
-  //   const wrapper = shallow(<Functions {...props} />);
-
-  //   wrapper.find('ToggleButton').at(0).simulate('click');
-    
-  //   expect(props.onToggleHint).toHaveBeenCalled();
-  // });
-
-
 });

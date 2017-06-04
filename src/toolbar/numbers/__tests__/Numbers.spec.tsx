@@ -23,11 +23,11 @@ describe('Numbers', () => {
     const wrapper = shallow(<Numbers {...props}/>);
 
     expect(wrapper.find('NumberButton').length).toBe(9);
-    for(let i = 0; i < 9; i++ ) {
+    for (let i = 0; i < 9; i++ ) {
       expect(wrapper.find('NumberButton').at(i).prop('num')).toBe(i + 1);
       expect(wrapper.find('NumberButton').at(i).prop('hint')).toBe(false);
       expect(wrapper.find('NumberButton').at(i).prop('hasSelectedCell')).toBe(false);
-      expect(wrapper.find('NumberButton').at(i).prop('hintResult')).toEqual([1,2,3]);
+      expect(wrapper.find('NumberButton').at(i).prop('hintResult')).toEqual([1, 2, 3]);
     }
 
     expect(props.onFillCell).not.toHaveBeenCalled();
@@ -39,11 +39,11 @@ describe('Numbers', () => {
     const wrapper = shallow(<Numbers {...props}/>);
 
     expect(wrapper.find('NumberButton').length).toBe(9);
-    for(let i = 0; i < 9; i++ ) {
+    for (let i = 0; i < 9; i++ ) {
       expect(wrapper.find('NumberButton').at(i).prop('num')).toBe(i + 1);
       expect(wrapper.find('NumberButton').at(i).prop('hint')).toBe(true);
       expect(wrapper.find('NumberButton').at(i).prop('hasSelectedCell')).toBe(false);
-      expect(wrapper.find('NumberButton').at(i).prop('hintResult')).toEqual([1,2,3]);
+      expect(wrapper.find('NumberButton').at(i).prop('hintResult')).toEqual([1, 2, 3]);
     }
 
     expect(props.onFillCell).not.toHaveBeenCalled();
@@ -55,11 +55,11 @@ describe('Numbers', () => {
     const wrapper = shallow(<Numbers {...props}/>);
 
     expect(wrapper.find('NumberButton').length).toBe(9);
-    for(let i = 0; i < 9; i++ ) {
+    for (let i = 0; i < 9; i++ ) {
       expect(wrapper.find('NumberButton').at(i).prop('num')).toBe(i + 1);
       expect(wrapper.find('NumberButton').at(i).prop('hint')).toBe(false);
       expect(wrapper.find('NumberButton').at(i).prop('hasSelectedCell')).toBe(true);
-      expect(wrapper.find('NumberButton').at(i).prop('hintResult')).toEqual([1,2,3]);
+      expect(wrapper.find('NumberButton').at(i).prop('hintResult')).toEqual([1, 2, 3]);
     }
 
     expect(props.onFillCell).not.toHaveBeenCalled();
@@ -71,14 +71,13 @@ describe('Numbers', () => {
     const wrapper = shallow(<Numbers {...props}/>);
 
     expect(wrapper.find('NumberButton').length).toBe(9);
-    for(let i = 0; i < 9; i++ ) {
+    for (let i = 0; i < 9; i++ ) {
       expect(wrapper.find('NumberButton').at(i).prop('num')).toBe(i + 1);
       expect(wrapper.find('NumberButton').at(i).prop('hint')).toBe(false);
       expect(wrapper.find('NumberButton').at(i).prop('hasSelectedCell')).toBe(false);
-      expect(wrapper.find('NumberButton').at(i).prop('hintResult')).toEqual([4,5,6]);
+      expect(wrapper.find('NumberButton').at(i).prop('hintResult')).toEqual([4, 5, 6]);
     }
 
     expect(props.onFillCell).not.toHaveBeenCalled();
   });
 });
-

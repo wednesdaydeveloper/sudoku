@@ -1,7 +1,6 @@
 import * as React from 'react';
 import MessageComponent, {Props} from '../Message';
 import {shallow} from 'enzyme';
-//import { Message } from '../../State';
 
 describe('Message', () => {
 
@@ -20,12 +19,11 @@ describe('Message', () => {
     expect(wrapper.find('div').at(0).prop('className')).toBe('alert');
   });
 
-
   it('rendering messages２件', () => {
     props.messages = [
       {messageType: 'alert-success', messageString: '成功' },      
       {messageType: 'alert-fail', messageString: '失敗' },      
-    ]
+    ];
 
     const wrapper = shallow(<MessageComponent {...props} />);
     expect(wrapper.find('div').length).toBe(3);

@@ -52,7 +52,6 @@ describe('NumberButton', () => {
     expect(props.onFillCell).not.toHaveBeenCalled();
   });
 
-
   it('rendering hintResult が空', () => {
     props.hintResult = [];
 
@@ -104,7 +103,6 @@ describe('NumberButton', () => {
 
     expect(props.onFillCell).not.toHaveBeenCalled();
   });  
-
 
   it('click', () => {
 

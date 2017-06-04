@@ -11,10 +11,10 @@ describe('Matrix', () => {
   beforeEach(() => {
 
     const data: SudokuCell[] = Array<SudokuCell>(81);
-    for (let row=0; row<9; row++) {
-      for (let col=0; col<9; col++) {
+    for (let row = 0; row < 9; row++) {
+      for (let col = 0; col < 9; col++) {
         const val = row * 9 + col + 1;
-        data[val-1] = {row, col, initial: true, val};
+        data[val - 1] = {row, col, initial: true, val};
       }
     }
     //  デフォルトのプロパティ
@@ -24,7 +24,6 @@ describe('Matrix', () => {
       onSelectCell: (cell: SudokuCell) => {return; },
     };
     spyOn(props, 'onSelectCell');
-    
   });
 
   it('rendering', () => {
@@ -34,11 +33,11 @@ describe('Matrix', () => {
 
     expect(wrapper.find('tr').length).toBe(9);
     expect(wrapper.find('tr > td').length).toBe(81);
-    for (let i=0; i<81; i++) {
+    for (let i = 0; i < 81; i++) {
       expect(wrapper.find('tr > td').at(i).prop('className')).toBe('initial ');
     }
     expect(wrapper.find('tr > td > p').length).toBe(81);
-    for (let i=0; i<81; i++) {
+    for (let i = 0; i < 81; i++) {
       expect(wrapper.find('tr > td > p').at(i).prop('children')).toBe(i + 1);
     }
   });
@@ -51,7 +50,6 @@ describe('Matrix', () => {
     expect(wrapper.find('tr > td > p').at(10).prop('children')).toBe('');
   });
 
-
   it('rendering initialがfalseの場合', () => {
     props.data[10].initial = false;
 
@@ -61,7 +59,6 @@ describe('Matrix', () => {
     expect(wrapper.find('tr > td > p').at(10).prop('children')).toBe(11);
   });
 
-
   it('rendering selected が設定されている', () => {
     props.selected = {row: 1, col: 1, val: 999};  //  val は関係ない
 
@@ -70,7 +67,6 @@ describe('Matrix', () => {
     expect(wrapper.find('tr > td').at(10).prop('className')).toBe('selected initial ');
     expect(wrapper.find('tr > td > p').at(10).prop('children')).toBe(11);
   });
-
 
   it('rendering selected が設定されていて initial がfalse', () => {
     props.data[10].initial = false;
@@ -91,7 +87,6 @@ describe('Matrix', () => {
     
     expect(props.onSelectCell).toHaveBeenCalledWith(props.data[10]);
   });
-
 
   it('rendering when clicked initial がtrue', () => {
     props.data[10].initial = true;

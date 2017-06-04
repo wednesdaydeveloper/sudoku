@@ -11,7 +11,7 @@ describe('UndoButton', () => {
     props = {
         disabled: false,
         onclick: () => {return; },
-        children: "undo",
+        children: 'undo',
     };
     spyOn(props, 'onclick');
     
@@ -25,7 +25,6 @@ describe('UndoButton', () => {
     expect(wrapper.find('button').at(0).prop('children')).toBe('undo');
     expect(wrapper.find('button').at(0).prop('className')).toBe('btn btn-default');
   });
-
 
   it('rendering when disabled', () => {
     props.disabled = true;
