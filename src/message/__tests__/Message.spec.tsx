@@ -1,6 +1,19 @@
 import * as React from 'react';
-import MessageComponent, {Props} from '../Message';
 import {shallow} from 'enzyme';
+import { create } from 'react-test-renderer'
+
+import MessageComponent, {Props} from '../Message';
+
+describe('MessageComponent の Snapshot',()=>{
+  const messages = [
+    {messageType: 'alert-success', messageString: '成功' },      
+    {messageType: 'alert-fail', messageString: '失敗' },      
+  ];
+  it('+++capturing Snapshot of Home', () => {
+    const renderedValue =  create(<MessageComponent messages={messages} />).toJSON()
+    expect(renderedValue).toMatchSnapshot();
+  });
+});
 
 describe('Message', () => {
 

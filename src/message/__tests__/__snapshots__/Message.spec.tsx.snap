@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageComponent の Snapshot +++capturing Snapshot of Home 1`] = `
+<div
+  className="alert"
+>
+  <div
+    className="alert alert-success"
+    role="alert"
+  >
+    成功
+  </div>
+  <div
+    className="alert alert-fail"
+    role="alert"
+  >
+    失敗
+  </div>
+</div>
+`;
