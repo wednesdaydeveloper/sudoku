@@ -3,35 +3,3 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-
-
-.sudokuTable {
-  border-collapse: collapse;
-  table-layout: fixed;
-  border: 1px black solid;
-}
-
-.sudokuTable td {
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  border: 1px black solid;
-}
-
-.sudokuTable td.initial {
-  font-weight: bold;
-}
-
-/* セルの選択時の色 */
-.sudokuTable td.selected {
-  background-color: LightBlue;
-}
-
-.sudokuTable td:hover {
-  background-color: lightcyan;
-}
-
-/* ボタングループ間の隙間 */
-.toolbox .btn-group {
-  padding-right: 10px;
-}

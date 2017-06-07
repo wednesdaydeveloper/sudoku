@@ -10,7 +10,7 @@ export interface DispatchProps {
 
 export type Props = StateProps & DispatchProps;
 
-const MessageComponent = (props: StateProps & DispatchProps) => {
+const MessageComponent = (props: Props) => {
 
   const getClassName = (message: Message) => 'alert ' + message.messageType;
 

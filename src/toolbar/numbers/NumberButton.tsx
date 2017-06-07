@@ -1,4 +1,6 @@
 import * as React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import './NumberButton.css';
 
 export interface StateProps {
   hint: boolean;
@@ -16,17 +18,16 @@ export interface NumberButtonProps extends Props  {
   num: number;
 }
 
-const getClassName = (props: NumberButtonProps) => {
-  return !props.hasSelectedCell || !props.hint || props.hintResult.some(n => n === props.num)
-    ? 'btn btn-default'
-    : 'btn btn-default disabled';
+const disabled = (props: NumberButtonProps) => {
+  return props.hasSelectedCell && props.hint && props.hintResult.every(n => n !== props.num);
 };
 
- const NumberButton = (props: NumberButtonProps) => {
+const NumberButton = (props: NumberButtonProps) => {
   return (
-    <button className={getClassName(props)} onClick={e => props.onFillCell(props.num)}>
-      {props.num}
-    </button>
+    <RaisedButton
+      disabled={disabled(props)}
+      className="numberButton"
+      onClick={e => props.onFillCell(props.num)} >{props.num}</RaisedButton>
   );
 };
 

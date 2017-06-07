@@ -3,6 +3,9 @@ import Numbers from '../Numbers';
 import {Props} from '../NumberButton';
 
 import {shallow} from 'enzyme';
+import { create } from 'react-test-renderer';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 describe('Numbers', () => {
 
@@ -18,6 +21,14 @@ describe('Numbers', () => {
     };
     spyOn(props, 'onFillCell');
   });
+
+  it('Numbers の Snapshot', () => {
+    const renderedValue =  create(
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <Numbers {...props} />
+    </MuiThemeProvider>).toJSON();
+    expect(renderedValue).toMatchSnapshot();
+  });  
 
   it('rendering', () => {
     const wrapper = shallow(<Numbers {...props}/>);

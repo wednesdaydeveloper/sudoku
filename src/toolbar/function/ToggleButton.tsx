@@ -1,17 +1,18 @@
 import * as React from 'react';
+import Toggle from 'material-ui/Toggle';
 
 export interface Props extends React.Props<{}> {
   active: boolean;
+  label: string;
   onclick: () => void;
 }
 
 const ToggleButton = (props: Props) => {
   return (
-    <button
-      className={'btn btn-default' + (props.active ? ' active' : '')}
-      onClick={e => props.onclick()}>
-      {props.children}
-    </button>
+    <Toggle
+      label={props.label}
+      defaultToggled={props.active}
+      onClick={e => props.onclick()} />
   );
 };
 

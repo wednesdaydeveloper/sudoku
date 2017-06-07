@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
-import configureStore from 'redux-mock-store';
+import { shallow, mount , ShallowWrapper} from 'enzyme';
+import configureStore, {IStore} from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
 import MessageContainer from '../Container';
-import MessageComponent from '../Message';
 import { SudokuState } from '../../State';
+import MessageComponet, {Props} from '../Message';
 
 const initialState: SudokuState = {
   initialCells: [],
@@ -23,33 +23,32 @@ const initialState: SudokuState = {
 
 describe('Messageのコンテナのテスト', () => {
 
-  const mockStore = configureStore()
-  let store;
-  let container;
-
+  const mockStore = configureStore<SudokuState>();
+  let container: ShallowWrapper<Props, SudokuState>;
+  let store: IStore<SudokuState>;
   beforeEach(() => {
-    store = mockStore(initialState)
-    container = shallow(<MessageContainer store={store} />)
-  })
+    store = mockStore(initialState);
+    container = shallow(<MessageContainer store={store} />);
+  });
 
   it('+++ render the connected(SMART) component', () => {
-    expect(container.length).toEqual(1)
+    expect(container.length).toEqual(1);
   });
 
   it('+++ check Prop matches with initialState', () => {
-    expect(container.prop('messages')).toEqual(initialState.messages)
+    expect(container.prop('messages')).toEqual(initialState.messages);
   });
 
 });
 
-describe('Messageのコンテナのテスト.Provider を経由',()=>{
-    const mockStore = configureStore()
-    let store,wrapper
+describe('Messageのコンテナのテスト.Provider を経由', () => {
+    const mockStore = configureStore();
+    let store, wrapper;
 
-    beforeEach(()=>{
-        store = mockStore(initialState)
-        wrapper = mount( <Provider store={store}><MessageContainer /></Provider> )
-    })
+    beforeEach(() => {
+        store = mockStore(initialState);
+        wrapper = mount( <Provider store={store}><MessageContainer /></Provider> );
+    });
 
     it('div タグが３つ', () => {
       expect(wrapper.find('div').length).toBe(3);
@@ -62,10 +61,10 @@ describe('Messageのコンテナのテスト.Provider を経由',()=>{
     });
 
     it('+++ render the connected(SMART) component', () => {
-       expect(wrapper.find(MessageContainer).length).toEqual(1)
+       expect(wrapper.find(MessageContainer).length).toEqual(1);
     });
 
     it('+++ check Prop matches with initialState', () => {
-       expect(wrapper.find(MessageComponent).prop('messages')).toEqual(initialState.messages)
+       expect(wrapper.find(MessageComponet).prop('messages')).toEqual(initialState.messages);
     });
 });

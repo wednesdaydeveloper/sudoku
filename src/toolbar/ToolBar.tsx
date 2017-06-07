@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Numbers from './numbers/Container';
 import Functions from './function/Container';
+import './ToolBar.css';
 
 export interface StateProps {
 }

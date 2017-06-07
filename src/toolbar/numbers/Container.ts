@@ -1,10 +1,10 @@
 import Numbers from './Numbers';
-import {StateProps, DispatchProps} from './NumberButton';
+import { StateProps, DispatchProps } from './NumberButton';
 
-import {connect} from 'react-redux';
-import {Dispatch} from 'redux';
-import {fillCell} from '../../matrix/module';
-import {SudokuState} from '../../State';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { fillCell } from '../../matrix/module';
+import { SudokuState } from '../../State';
 
 function mapStateToProps(state: SudokuState): StateProps {
   return {
@@ -18,7 +18,7 @@ type DispatchType = (val: number) => void;
 
 function mapDispatchToProps(dispatch: Dispatch<DispatchType>): DispatchProps {
   return {
-     onFillCell: (val: number) => dispatch(fillCell(val)),
+    onFillCell: (val: number) => dispatch(fillCell(val)),
   };
 }
 

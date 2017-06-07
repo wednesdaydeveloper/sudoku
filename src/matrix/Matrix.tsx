@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SudokuCell } from '../State';
+import './Matrix.css';
 
 export interface StateProps {
   data: SudokuCell[];

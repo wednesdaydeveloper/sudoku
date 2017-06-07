@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
+import { create } from 'react-test-renderer';
 
 import Matrix, {Props} from '../Matrix';
 import { SudokuCell } from '../../State';
@@ -25,6 +26,11 @@ describe('Matrix', () => {
     };
     spyOn(props, 'onSelectCell');
   });
+  
+  it('Matrix の Snapshot', () => {
+    const renderedValue =  create(<Matrix {...props} />).toJSON();
+    expect(renderedValue).toMatchSnapshot();
+  });  
 
   it('rendering', () => {
     const wrapper = shallow(<Matrix {...props} />);

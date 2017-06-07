@@ -2,7 +2,7 @@ import * as React from 'react';
 import Functions, {Props} from '../Functions';
 import {shallow} from 'enzyme';
 
-describe('ToggleButton', () => {
+describe('Functions', () => {
 
   let props: Props;
 
@@ -24,9 +24,9 @@ describe('ToggleButton', () => {
   it('rendering', () => {
     const wrapper = shallow(<Functions {...props} />);
     expect(wrapper.find('ToggleButton').length).toBe(2);
-    expect(wrapper.find('ToggleButton').at(0).prop('children')).toBe('hint');
+    expect(wrapper.find('ToggleButton').at(0).prop('label')).toBe('hint');
     expect(wrapper.find('ToggleButton').at(0).prop('active')).toBe(false);
-    expect(wrapper.find('ToggleButton').at(1).prop('children')).toBe('teacher');
+    expect(wrapper.find('ToggleButton').at(1).prop('label')).toBe('teacher');
     expect(wrapper.find('ToggleButton').at(1).prop('active')).toBe(false);
 
     expect(wrapper.find('UndoButton').length).toBe(1);
@@ -39,9 +39,9 @@ describe('ToggleButton', () => {
 
     const wrapper = shallow(<Functions {...props} />);
     expect(wrapper.find('ToggleButton').length).toBe(2);
-    expect(wrapper.find('ToggleButton').at(0).prop('children')).toBe('hint');
+    expect(wrapper.find('ToggleButton').at(0).prop('label')).toBe('hint');
     expect(wrapper.find('ToggleButton').at(0).prop('active')).toBe(true);
-    expect(wrapper.find('ToggleButton').at(1).prop('children')).toBe('teacher');
+    expect(wrapper.find('ToggleButton').at(1).prop('label')).toBe('teacher');
     expect(wrapper.find('ToggleButton').at(1).prop('active')).toBe(false);
 
     expect(wrapper.find('UndoButton').length).toBe(1);
@@ -54,9 +54,9 @@ describe('ToggleButton', () => {
 
     const wrapper = shallow(<Functions {...props} />);
     expect(wrapper.find('ToggleButton').length).toBe(2);
-    expect(wrapper.find('ToggleButton').at(0).prop('children')).toBe('hint');
+    expect(wrapper.find('ToggleButton').at(0).prop('label')).toBe('hint');
     expect(wrapper.find('ToggleButton').at(0).prop('active')).toBe(false);
-    expect(wrapper.find('ToggleButton').at(1).prop('children')).toBe('teacher');
+    expect(wrapper.find('ToggleButton').at(1).prop('label')).toBe('teacher');
     expect(wrapper.find('ToggleButton').at(1).prop('active')).toBe(true);
 
     expect(wrapper.find('UndoButton').length).toBe(1);
@@ -69,9 +69,9 @@ describe('ToggleButton', () => {
 
     const wrapper = shallow(<Functions {...props} />);
     expect(wrapper.find('ToggleButton').length).toBe(2);
-    expect(wrapper.find('ToggleButton').at(0).prop('children')).toBe('hint');
+    expect(wrapper.find('ToggleButton').at(0).prop('label')).toBe('hint');
     expect(wrapper.find('ToggleButton').at(0).prop('active')).toBe(false);
-    expect(wrapper.find('ToggleButton').at(1).prop('children')).toBe('teacher');
+    expect(wrapper.find('ToggleButton').at(1).prop('label')).toBe('teacher');
     expect(wrapper.find('ToggleButton').at(1).prop('active')).toBe(false);
 
     expect(wrapper.find('UndoButton').length).toBe(1);

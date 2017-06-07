@@ -1,4 +1,5 @@
 import * as React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export interface Props extends React.Props<{}> {
   disabled: boolean;
@@ -7,11 +8,11 @@ export interface Props extends React.Props<{}> {
 
 const UndoButton = (props: Props) => {
   return (
-    <button
-      className={'btn btn-default' + (props.disabled ? ' disabled' : '')}
+    <RaisedButton
+      disabled={props.disabled}
       onClick={e => props.onclick()}>
       {props.children}
-    </button>
+    </RaisedButton>
   );
 };
 

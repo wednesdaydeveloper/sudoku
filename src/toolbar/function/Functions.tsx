@@ -21,8 +21,8 @@ const Functions = (props: Props) => {
   return (
     <div>
       <div className="btn-group" data-toggle="buttons">
-        <ToggleButton active={props.hint} onclick={props.onToggleHint} >hint</ToggleButton>
-        <ToggleButton active={props.teacher} onclick={props.onToggleTeacher} >teacher</ToggleButton>
+        <ToggleButton active={props.hint} onclick={props.onToggleHint} label="hint"/>
+        <ToggleButton active={props.teacher} onclick={props.onToggleTeacher} label="teacher"/>
       </div>
 
       <div className="btn-group" role="group">
